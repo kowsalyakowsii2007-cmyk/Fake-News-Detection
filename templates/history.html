@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History - Fake News Detector</title>
+    <style>
+        body { font-family: Arial; background: #f0f2f5; margin: 0; }
+        nav { background: #e74c3c; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; }
+        .container { max-width: 700px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th { background: #e74c3c; color: white; padding: 10px; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; text-align: center; }
+        p { color: #888; text-align: center; }
+    </style>
+</head>
+<body>
+    <nav>
+        <span>Fake News Detector</span>
+        <span>
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/dashboard">Check News</a>
+            <a href="/history">History</a>
+        </span>
+    </nav>
+    <div class="container">
+        <h2>Check History</h2>
+        <table>
+            <tr>
+                <th>News (Preview)</th>
+                <th>Result</th>
+                <th>Confidence</th>
+            </tr>
+            {% for item in history %}
+            <tr>
+                <td>{{ item.news }}...</td>
+                <td class="{{ item.result }}">{{ item.result }}</td>
+                <td>{{ item.confidence }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if not history %}
+        <p>No history yet. Start checking news!</p>
+        {% endif %}
+    </div>
+</body>
+</html>

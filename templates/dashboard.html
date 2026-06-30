@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Fake News Detector</title>
+    <style>
+        body { font-family: Arial; background: #f0f2f5; margin: 0; }
+        nav { background: #e74c3c; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        nav a { color: white; text-decoration: none; margin-left: 15px; }
+        .container { max-width: 700px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        textarea { width: 100%; height: 150px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px; box-sizing: border-box; }
+        button { margin-top: 10px; padding: 12px 30px; background: #e74c3c; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 5px; text-align: center; font-size: 20px; font-weight: bold; }
+        .FAKE { background: #ffebee; color: #e74c3c; }
+        .REAL { background: #e8f5e9; color: #27ae60; }
+    </style>
+</head>
+<body>
+    <nav>
+        <span>Fake News Detector</span>
+        <span>
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/dashboard">Check News</a>
+            <a href="/history">History</a>
+        </span>
+    </nav>
+    <div class="container">
+        <h2>Check News</h2>
+        <form method="POST">
+            <textarea name="news" placeholder="Paste your news text here..." required></textarea>
+            <br>
+            <button type="submit">Check News</button>
+        </form>
+        {% if result %}
+        <div class="result {{ result }}">
+            Result: {{ result }} | Confidence: {{ confidence }}%
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
